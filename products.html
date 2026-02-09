@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Plywood Store.lk - Premium Timber Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #d97706;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .product-filter.active {
+            background-color: #d97706;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="bg-stone-50 text-stone-900">
+
+    <!-- Navbar Snippet (Reusing structure for consistency) -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm py-3" id="navbar">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-amber-600 rounded-lg flex items-center justify-center text-white">
+                    <i data-lucide="layers" class="w-6 h-6"></i>
+                </div>
+                <a href="index.html" class="text-2xl font-bold tracking-tight text-amber-900">PLYWOOD<span
+                        class="text-amber-600">STORE.LK</span></a>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link relative font-medium text-stone-800 hover:text-amber-600">Home</a>
+                <a href="products.html" class="nav-link relative font-medium text-amber-600">Products</a>
+                <a href="about.html" class="nav-link relative font-medium text-stone-800 hover:text-amber-600">About
+                    Us</a>
+                <a href="contact.html"
+                    class="nav-link relative font-medium text-stone-800 hover:text-amber-600">Contact</a>
+                <a href="contact.html"
+                    class="bg-amber-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-amber-700 transition">Get
+                    Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 bg-stone-100">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-900 mb-6">Our Premium Collection</h1>
+            <p class="text-lg text-stone-600 max-w-2xl mx-auto">Explore our wide range of world-class plywood and timber
+                solutions tailored for every architectural need.</p>
+        </div>
+    </section>
+
+    <!-- Product Filter & Grid -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-4 mb-16">
+                <button
+                    class="product-filter active px-8 py-3 rounded-full border border-amber-600 font-bold hover:bg-amber-600 hover:text-white transition">All
+                    Products</button>
+                <button
+                    class="product-filter px-8 py-3 rounded-full border border-stone-200 font-bold hover:bg-amber-600 hover:text-white transition text-stone-600">Marine
+                    Ply</button>
+                <button
+                    class="product-filter px-8 py-3 rounded-full border border-stone-200 font-bold hover:bg-amber-600 hover:text-white transition text-stone-600">MDF
+                    Boards</button>
+                <button
+                    class="product-filter px-8 py-3 rounded-full border border-stone-200 font-bold hover:bg-amber-600 hover:text-white transition text-stone-600">Veneers</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="dynamic-product-grid">
+                <!-- Products will be loaded here via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Reused -->
+    <footer class="bg-stone-900 text-stone-400 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex items-center justify-center gap-2 mb-8">
+                <div class="w-8 h-8 bg-amber-600 rounded-lg flex items-center justify-center text-white">
+                    <i data-lucide="layers" class="w-5 h-5"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-white">PLYWOOD<span
+                        class="text-amber-600">STORE.LK</span></span>
+            </div>
+            <p class="mb-8">&copy; 2026 Plywood Store.lk. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('dynamic-product-grid');
+            const products = StoreDB.getProducts();
+
+            grid.innerHTML = products.map(p => `
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-stone-100 reveal group active">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        ${p.badge ? `<div class="absolute top-4 right-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">${p.badge}</div>` : ''}
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-stone-900 mb-2">${p.name}</h3>
+                        <p class="text-stone-600 mb-6 text-sm">${p.desc}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-stone-400 text-sm font-medium">${p.category}</span>
+                            <a href="contact.html" class="w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-amber-600 transition">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

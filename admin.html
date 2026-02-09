@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Plywood Store.lk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-stone-100 min-h-screen flex items-center justify-center p-6">
+
+    <div class="w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 border border-stone-200" id="login-container">
+        <div class="text-center mb-10">
+            <div class="w-16 h-16 bg-amber-600 rounded-2xl flex items-center justify-center text-white mx-auto mb-4">
+                <i data-lucide="lock" class="w-8 h-8"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-stone-900">Admin Access</h1>
+            <p class="text-stone-500 mt-2">Enter credentials to manage your store</p>
+        </div>
+
+        <form id="login-form" class="space-y-6">
+            <div class="space-y-2">
+                <label class="text-sm font-bold text-stone-700 uppercase tracking-wider">Username</label>
+                <div class="relative">
+                    <i data-lucide="user" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400"></i>
+                    <input type="text" id="username"
+                        class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-12 pr-4 py-4 focus:outline-none focus:ring-2 focus:ring-amber-600/20 focus:border-amber-600 transition"
+                        value="admin">
+                </div>
+            </div>
+            <div class="space-y-2">
+                <label class="text-sm font-bold text-stone-700 uppercase tracking-wider">Password</label>
+                <div class="relative">
+                    <i data-lucide="key" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400"></i>
+                    <input type="password" id="password"
+                        class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-12 pr-4 py-4 focus:outline-none focus:ring-2 focus:ring-amber-600/20 focus:border-amber-600 transition"
+                        value="1234">
+                </div>
+            </div>
+            <button type="submit"
+                class="w-full bg-stone-900 text-white font-bold py-5 rounded-xl hover:bg-amber-600 transition-all shadow-xl">
+                Login to Dashboard
+            </button>
+        </form>
+        <p class="text-center text-stone-400 text-xs mt-8 uppercase tracking-widest font-bold">Secure Environment</p>
+    </div>
+
+    <!-- Admin Dashboard (Hidden initially) -->
+    <div class="hidden w-full max-w-6xl" id="dashboard">
+        <header
+            class="flex justify-between items-center mb-10 bg-white p-6 rounded-3xl shadow-lg border border-stone-200">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-amber-600 rounded-xl flex items-center justify-center text-white">
+                    <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-stone-900">Store Manager</h2>
+                    <p class="text-stone-500 text-sm">Welcome back, Administrator</p>
+                </div>
+            </div>
+            <button id="logout-btn"
+                class="bg-stone-100 text-stone-600 px-6 py-2 rounded-full font-bold hover:bg-red-50 hover:text-red-600 transition flex items-center gap-2">
+                <i data-lucide="log-out" class="w-4 h-4"></i> Logout
+            </button>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Add/Edit Form -->
+            <div class="lg:col-span-1 bg-white p-8 rounded-3xl shadow-xl border border-stone-200 h-fit sticky top-6">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i data-lucide="plus-circle" class="text-amber-600"></i> <span id="form-title">Add New
+                        Product</span>
+                </h3>
+                <form id="product-form" class="space-y-4">
+                    <input type="hidden" id="edit-id">
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-stone-500 uppercase">Product Name</label>
+                        <input type="text" id="p-name" required
+                            class="w-full border border-stone-200 rounded-xl px-4 py-3 focus:border-amber-600 focus:outline-none transition">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-stone-500 uppercase">Category</label>
+                        <select id="p-category"
+                            class="w-full border border-stone-200 rounded-xl px-4 py-3 focus:border-amber-600 focus:outline-none transition">
+                            <option>Plywood Board</option>
+                            <option>Melamine Board</option>
+                            <option>MDF Board</option>
+                            <option>Eco Board</option>
+                            <option>Shutter Board</option>
+                            <option>Plywood Doors</option>
+                        </select>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-stone-500 uppercase">Product Image</label>
+                        <div class="flex flex-col gap-3">
+                            <input type="file" id="p-file" accept="image/*"
+                                class="text-sm text-stone-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100 transition">
+                            <div class="text-center font-bold text-stone-300">OR</div>
+                            <input type="text" id="p-image" placeholder="Paste Unsplash URL"
+                                class="w-full border border-stone-200 rounded-xl px-4 py-3 focus:border-amber-600 focus:outline-none transition">
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-stone-500 uppercase">Description</label>
+                        <textarea id="p-desc" rows="3" required
+                            class="w-full border border-stone-200 rounded-xl px-4 py-3 focus:border-amber-600 focus:outline-none transition"></textarea>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-stone-500 uppercase">Badge (e.g. Premium, Sale)</label>
+                        <input type="text" id="p-badge"
+                            class="w-full border border-stone-200 rounded-xl px-4 py-3 focus:border-amber-600 focus:outline-none transition">
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-amber-600 text-white font-bold py-4 rounded-xl hover:bg-amber-700 transition shadow-lg shadow-amber-200 mt-4">
+                        Save Product
+                    </button>
+                    <button type="button" id="cancel-edit"
+                        class="hidden w-full bg-stone-100 text-stone-600 font-bold py-3 rounded-xl hover:bg-stone-200 transition mt-2">
+                        Cancel Edit
+                    </button>
+                </form>
+            </div>
+
+            <!-- Product List -->
+            <div class="lg:col-span-2">
+                <div class="bg-white p-8 rounded-3xl shadow-xl border border-stone-200 mb-8">
+                    <h3 class="text-xl font-bold mb-6 flex items-center justify-between">
+                        Live Inventory
+                        <span class="bg-amber-100 text-amber-700 text-xs px-3 py-1 rounded-full" id="item-count">6
+                            Items</span>
+                    </h3>
+                    <div class="space-y-4" id="admin-inventory">
+                        <!-- Items injected by JS -->
+                    </div>
+                </div>
+
+                <div class="bg-amber-50 p-6 rounded-3xl border border-amber-100">
+                    <div class="flex items-start gap-4">
+                        <i data-lucide="info" class="text-amber-600 w-6 h-6 shrink-0"></i>
+                        <p class="text-amber-900 text-sm leading-relaxed">
+                            <strong>Note:</strong> Since we are not using a server (Node.js), all changes are saved to
+                            your browser's <b>Local Storage</b>. This means you can see the changes on this device. To
+                            make it global, you could integrate Firebase easily.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

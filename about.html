@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Plywood Store.lk - Legacy of Quality</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wood-pattern {
+            background-image: radial-gradient(#d977061a 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-stone-50 text-stone-900">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm py-3" id="navbar">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-amber-600 rounded-lg flex items-center justify-center text-white">
+                    <i data-lucide="layers" class="w-6 h-6"></i>
+                </div>
+                <a href="index.html" class="text-2xl font-bold tracking-tight text-amber-900">PLYWOOD<span
+                        class="text-amber-600">STORE.LK</span></a>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link relative font-medium text-stone-800 hover:text-amber-600">Home</a>
+                <a href="products.html"
+                    class="nav-link relative font-medium text-stone-800 hover:text-amber-600">Products</a>
+                <a href="about.html" class="nav-link relative font-medium text-amber-600">About Us</a>
+                <a href="contact.html"
+                    class="nav-link relative font-medium text-stone-800 hover:text-amber-600">Contact</a>
+                <a href="contact.html"
+                    class="bg-amber-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-amber-700 transition">Get
+                    Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="h-[60vh] flex items-center bg-stone-900 text-white relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop"
+            class="absolute inset-0 w-full h-full object-cover opacity-30 shadow-inner" alt="Factory">
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Established in <span class="text-amber-500">2008</span></h1>
+            <p class="text-xl text-stone-300 max-w-2xl mx-auto">A decade and a half of unwavering commitment to
+                providing the highest grade timber products in the region.</p>
+        </div>
+    </section>
+
+    <!-- Mission/Vision -->
+    <section class="py-24 wood-pattern">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="text-4xl font-bold mb-8 text-stone-900">Crafting the Future of Infrastructure</h2>
+                    <p class="text-lg text-stone-600 leading-relaxed mb-6">At Elite Plywood, we believe that every great
+                        structure begins with a solid foundation. Our journey began small, but our vision was always
+                        massive: to become the most trusted name in wood solutions.</p>
+                    <p class="text-lg text-stone-600 leading-relaxed">We combine traditional craftsmanship with
+                        state-of-the-art technology to ensure every sheet of plywood that leaves our facility meets
+                        international standards of durability and aesthetics.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-6 reveal">
+                    <div class="bg-white p-8 rounded-3xl shadow-lg border border-stone-100">
+                        <i data-lucide="target" class="w-10 h-10 text-amber-600 mb-4"></i>
+                        <h4 class="font-bold text-xl mb-2">Our Mission</h4>
+                        <p class="text-sm text-stone-500">To deliver premium, eco-friendly wood solutions that inspire
+                            architectural creativity.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-lg border border-stone-100 mt-8">
+                        <i data-lucide="eye" class="w-10 h-10 text-amber-600 mb-4"></i>
+                        <h4 class="font-bold text-xl mb-2">Our Vision</h4>
+                        <p class="text-sm text-stone-500">To lead the industry through innovation, sustainability, and
+                            technological excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team / Values -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-16">Our Core Principles</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div class="reveal">
+                    <div
+                        class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mx-auto mb-6">
+                        <i data-lucide="check-circle" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-bold text-xl mb-3">Integrity</h4>
+                    <p class="text-stone-500 text-sm">Honesty in every deal and transparency in our manufacturing
+                        process.</p>
+                </div>
+                <div class="reveal">
+                    <div
+                        class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mx-auto mb-6">
+                        <i data-lucide="users" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-bold text-xl mb-3">Community</h4>
+                    <p class="text-stone-500 text-sm">Supporting our local artisans and timber communities.</p>
+                </div>
+                <div class="reveal">
+                    <div
+                        class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mx-auto mb-6">
+                        <i data-lucide="leaf" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-bold text-xl mb-3">Sustainability</h4>
+                    <p class="text-stone-500 text-sm">Committed to reforestation and minimal waste production.</p>
+                </div>
+                <div class="reveal">
+                    <div
+                        class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mx-auto mb-6">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-bold text-xl mb-3">Innovation</h4>
+                    <p class="text-stone-500 text-sm">Continuously evolving our products for modern construction needs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-50 pt-24 pb-12">
+        <div class="container mx-auto px-6 text-center text-stone-500">
+            <p>&copy; 2026 Plywood Store.lk. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>
